@@ -1,33 +1,66 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind components;
+  @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+/*Header*/
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+ header{
+  background-color: #1a1a1a;
+  padding: 20px 50px;
+ }
+ .mobile-nav{
+  background-color: #1a1a1a;
+  top: 75px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  overflow: hidden;
+ }
+ .mobile-nav a{
+  display: list-item;
+  list-style: none;
+  margin: 15px 0;
+ }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+ /*Footer*/
+
+ footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: white;
+  text-align: center;
+ }
+
+ /*Inputs*/
+
+ input{
+  border: 1px solid rgb(219, 219, 219);
+  width: 100% !important;
+ }
+ button{
+  background-color: #5a59a0;
+ }
+ .border-form{
+  border: 1px solid rgb(233, 233, 233);
+  padding: 120px 80px;
+  border-radius: 16px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+ }
+
+ /*Generate button*/
+
+ .generate-button{
+  background-color: #5a59a0;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 50%;
+  z-index: 5;
+ }
