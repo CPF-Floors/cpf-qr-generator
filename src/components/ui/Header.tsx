@@ -41,7 +41,7 @@ function Header() {
             <Link href="/generate-new">Generate QR</Link>
             <Link href="#">Profile</Link>
             <div className="flex">
-              <Link className="mx-" href="#">Logout</Link><Image height={20} width={20} alt="out" src="/arrow-right-from-bracket-solid.svg"></Image>
+              <Link className="mx-" href="#">Logout</Link><Image className="mx-2" height={20} width={20} alt="out" src="/arrow-right-from-bracket-solid.svg"></Image>
             </div>
             
           </motion.div>

@@ -2,6 +2,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import Link from "next/link";
 import Image from "next/image";
+import { Key } from "lucide-react";
 
 export default function App() {
   interface IFormInput {
@@ -15,9 +16,22 @@ export default function App() {
     handleSubmit,
     reset,
   } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data)
-    console.log(typeof(data))
+  
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+
+
+    const dataR = await fetch("/api/qr", {
+      body: JSON.stringify(data),
+      method: "POST"
+    });
+
+    console.log(await dataR.json())
+    
+    return(
+      dataR
+    )
+
+
     reset()
   };
 

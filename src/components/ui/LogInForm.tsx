@@ -66,6 +66,13 @@ export default function App() {
             Log In
           </button>
 
+          <button className="p-2 mb-3 rounded text-white text-center" type="submit">
+          <Image className="absolute mx-4" height={20} width={20} alt="google" src="/google.svg" ></Image>
+            <Link href="#">
+              Log in with Google
+            </Link>
+          </button>
+
           <p>
             Not registered yet? Click to{" "}
             <Link className="font-semibold" href="/sign-up">

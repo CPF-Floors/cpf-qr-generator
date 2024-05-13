@@ -1,54 +1,61 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import qrModel from "@/models/qr.model";
 import { connectDB } from "../../../config/db";
+import qr from "qrcode"
 
+connectDB()
 
 export async function GET(req: NextRequest){
+    const ID = req.headers.get("QR-ID");
+
+    if(ID) {
+
+        try {
+            const QRDetails = await qrModel.findById(ID)
+            return NextResponse.json(QRDetails, {status: 200})
+        } catch (error) {
+            return NextResponse.json({message: "Bad Request"}, {status: 500})
+        }
+    }
+
     try {
         const allQR = await qrModel.find({})
-        res.status(200).json(allQR)
+        return NextResponse.json(allQR, {status: 200});
     } catch (error) {
-        res.status(500).json("Bad Rquest")
-    }
-    const { id } = req.params
-
-
-    try {
-        const QRDetails = await qrModel.findById(id)
-        res.status(200).json(QRDetails)
-    } catch (error) {
-        res.status(500).json("Bad Rquest")
+        return NextResponse.json({message: "Bad Request"}, {status: 500})
     }
 }
 
 
 export async function POST(req: NextRequest){
-    const { name, url } = req.body
+    const body = await req.json();
+
+    const { name, url } = body;
+
     try {
-        qr.toDataURL(url, async (err, qrCodeUrl) => {
-            if (err) {
-                res.status(400).send("Bad Request")
-            } else {
-                const newQR = new qrModel({
-                    qrName: name,
-                    qrImage: qrCodeUrl,
-                    qrUrl: url
-                })
-                const savedQR = await newQR.save()
-                res.status(200).json(savedQR)
-            }
+        const QR = await qr.toDataURL(url)
+
+        const newQR = new qrModel({
+            qrName: name,
+            qrImage: QR,
+            qrUrl: url
         })
+
+        const savedQR = await newQR.save()
+
+        return NextResponse.json([savedQR], {status: 200});
     } catch (error) {
-        res.status(500).json("No QR is being generated", error)
+        return NextResponse.json({message: "No QR is being generated", error }, {status: 500})
     }
 }
 
 export async function DELETE(req: NextRequest){
-    const { id } = req.params
+    const ID = req.headers.get("QR-ID");
     try {
-        const deleteQRCode = await qrModel.findByIdAndDelete(id)
-        res.status(204).json({ message: "QR ha sido eliminado", deletedQR: deleteQRCode })
+        const deleteQRCode = await qrModel.findByIdAndDelete(ID)
+        return NextResponse.json({ message: "QR ha sido eliminado", deletedQR: deleteQRCode }, {status: 200});
     } catch (error) {
-        res.status(500).json("Bad Server Request")
+        return NextResponse.json({message: "Bad Server Request"}, {status: 500});
     }
 }
