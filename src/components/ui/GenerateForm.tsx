@@ -3,12 +3,15 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import Link from "next/link";
 import Image from "next/image";
 import { Key } from "lucide-react";
+import { useState } from "react";
 
 export default function App() {
   interface IFormInput {
     name: string;
     url: string;
   }
+
+  const [qr, setQr] = useState([])
 
   const {
     register,
@@ -25,7 +28,7 @@ export default function App() {
       method: "POST"
     });
 
-    console.log(await dataR.json())
+    
     
     return(
       dataR
