@@ -1,17 +1,18 @@
-"use client";
+"use client"
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import Link from "next/link";
 import Image from "next/image";
-import { Key } from "lucide-react";
 import { useState } from "react";
 
 export default function App() {
+
   interface IFormInput {
     name: string;
     url: string;
   }
 
-  const [qr, setQr] = useState([])
+  const [qr, setQr] = useState(null)
 
   const {
     register,
@@ -21,19 +22,13 @@ export default function App() {
   } = useForm<IFormInput>();
   
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-
-
-    const dataR = await fetch("/api/qr", {
+    const response = await fetch("/api/qr", {
       body: JSON.stringify(data),
       method: "POST"
     });
 
-    
-    
-    return(
-      dataR
-    )
-
+    const dataR = await response.json();
+    setQr(dataR[0].qrImage); // Actualiza el estado de qr con la imagen del código QR
 
     reset()
   };
@@ -75,6 +70,13 @@ export default function App() {
           </button>
 
         </form>
+
+        {qr && (
+          <div className="mt-5 w-100 flex flex-col items-center justify-center">
+            <Image src={qr} alt="QR Code" width={300} height={300} />
+            <a href={qr} download="QRCode.png"><button className="W-100 p-2 mb-3 rounded text-white">Download QR</button></a>
+          </div>
+        )}
       </div>
     </>
   );

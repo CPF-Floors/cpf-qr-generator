@@ -9,7 +9,7 @@ function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="flex justify-between fixed w-100 right-0 left-0 ">
+    <header className="flex justify-between w-100">
       <Link href="/dashboard">
         <Image
           className="cursor-pointer"

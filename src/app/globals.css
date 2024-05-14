@@ -29,10 +29,6 @@
  /*Footer*/
 
  footer{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   padding: 20px;
   background-color: #1a1a1a;
   color: white;
@@ -64,3 +60,46 @@
   border-radius: 50%;
   z-index: 5;
  }
+
+
+/*Dahboard*/
+
+.dashboard-container{
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.dashboard-item-container{
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 16px;
+  margin: 20px 0;
+  padding: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.image-qr{
+  width: 10%;
+}
+.image-qr img{
+  width: 150px;
+  height: 150px;
+}
+.text-qr{
+  width: 90%;
+  overflow: hidden;
+}
+@media(max-width: 720px){
+  .dashboard-item-container{
+    height: 200px;
+  }
+  .image-qr{
+    width: 20%;
+  }
+  .image-qr img{
+    height: auto;
+  }
+  .text-qr{
+    width: 80%;
+  }
+}
