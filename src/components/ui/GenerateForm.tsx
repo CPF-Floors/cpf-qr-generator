@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import Link from "next/link";
@@ -6,13 +6,13 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function App() {
-
   interface IFormInput {
     name: string;
     url: string;
   }
 
-  const [qr, setQr] = useState(null)
+  const [qr, setQr] = useState(null);
+  const [qrName, setQrName] = useState(""); // Nuevo estado para almacenar el nombre del QR
 
   const {
     register,
@@ -20,24 +20,37 @@ export default function App() {
     handleSubmit,
     reset,
   } = useForm<IFormInput>();
-  
+
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const response = await fetch("/api/qr", {
       body: JSON.stringify(data),
-      method: "POST"
+      method: "POST",
     });
 
     const dataR = await response.json();
     setQr(dataR[0].qrImage); // Actualiza el estado de qr con la imagen del código QR
+    setQrName(data.name); // Actualiza el estado de qrName con el nombre del QR
 
-    reset()
+    reset();
   };
 
   return (
     <>
-      <div className="flex flex-col w-full justify-between items-center">
+      <div className="dashboard-container flex flex-col w-full justify-between items-center">
 
-      <form
+        {qr && (
+          <div className="qr-display-container my-20 w-100 flex flex-col items-center justify-center">
+            <Image src={qr} alt="QR Code" width={300} height={300} />
+            <a href={qr} download={`${qrName}.png`}>
+              <button className="W-100 p-2 mb-3 rounded text-white">
+                Download QR
+              </button>
+            </a>
+            <Link href="/dashboard">Go to the Dashboard</Link>
+          </div>
+        )}
+
+        <form
           className="flex flex-col w-10/12 text-center justify-center w-100"
           onSubmit={handleSubmit(onSubmit)}
         >
@@ -60,23 +73,13 @@ export default function App() {
             {...register("url", { required: true })}
           />
           {errors.url?.type === "required" && (
-            <p className="text-start mb-5 text-red-600">
-              URL is required *
-            </p>
+            <p className="text-start mb-5 text-red-600">URL is required *</p>
           )}
 
           <button className="p-2 mb-3 rounded text-white" type="submit">
             Generate
           </button>
-
         </form>
-
-        {qr && (
-          <div className="mt-5 w-100 flex flex-col items-center justify-center">
-            <Image src={qr} alt="QR Code" width={300} height={300} />
-            <a href={qr} download="QRCode.png"><button className="W-100 p-2 mb-3 rounded text-white">Download QR</button></a>
-          </div>
-        )}
       </div>
     </>
   );
