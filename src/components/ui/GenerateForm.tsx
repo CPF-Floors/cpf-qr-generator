@@ -30,6 +30,7 @@ export default function App() {
 
     const dataR = await response.json();
     setQr(dataR[0].qrImage); 
+    console.log(dataR)
     setQrName(data.name);
 
     reset();
@@ -55,6 +56,7 @@ export default function App() {
           className="flex flex-col w-10/12 text-center justify-center w-100"
           onSubmit={handleSubmit(onSubmit)}
         >
+          <p className="text-start mb-5">Please fill the fields to generate a new QR code</p>
           <input
             className="rounded p-2 mb-5"
             placeholder="New QR Name"

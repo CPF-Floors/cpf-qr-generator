@@ -5,6 +5,7 @@ import Image from "next/image";
 
 interface QR {
   _id: string,
+  qrCreatedAt: string,
   qrName: string;
   qrImage: string;
   qrUrl: string;
@@ -29,18 +30,17 @@ function Dashboard() {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "QR-ID": id, // Envía el ID del QR en los encabezados de la petición
+        "QR-ID": id, 
       },
     });
 
-    // Actualiza el estado para eliminar el QR de la interfaz de usuario
+
     setQrs(qrs.filter((qr) => qr._id !== id));
   };
 
   return (
     <div style={{ marginTop: "60px" }} className="dashboard-container">
-      <h1
-        style={{ fontSize: "20px", textAlign: "center", marginBottom: "20px" }}
+      <h1 className="text-center font-bold underline underline-offset-2"
       >
         Dashboard - Total QR codes: ({qrs.length})
       </h1>
@@ -62,6 +62,7 @@ function Dashboard() {
               <div className="text-qr relative">
                 <h2 className="font-bold my-5">{qr.qrName}</h2>
                 <p className="mb-5">{qr.qrUrl}</p>
+                <p>{qr.qrCreatedAt}</p>
                 <a
                   className="z-0 absolute bottom-0 right-0 m-0 p-5"
                   href={qr.qrImage}
