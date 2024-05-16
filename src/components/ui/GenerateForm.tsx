@@ -12,7 +12,8 @@ export default function App() {
   }
 
   const [qr, setQr] = useState(null);
-  const [qrName, setQrName] = useState(""); // Nuevo estado para almacenar el nombre del QR
+  const [qrName, setQrName] = useState(""); 
+
 
   const {
     register,
@@ -28,8 +29,8 @@ export default function App() {
     });
 
     const dataR = await response.json();
-    setQr(dataR[0].qrImage); // Actualiza el estado de qr con la imagen del código QR
-    setQrName(data.name); // Actualiza el estado de qrName con el nombre del QR
+    setQr(dataR[0].qrImage); 
+    setQrName(data.name);
 
     reset();
   };
