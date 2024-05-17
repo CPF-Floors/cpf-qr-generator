@@ -6,7 +6,7 @@
   font-family: montserrat;
 }
 ::selection{
-  background-color: rgb(32, 32, 32);
+  background-color: #17ec8a;
   color: white;
 }
 
@@ -43,36 +43,18 @@
 
 /*Header*/
 
- header{
-  background-color: #1a1a1a;
-  padding: 20px 30px;
-  z-index: 200 !important;
- }
- .mobile-nav{
-  background-color: #1a1a1a;
-  top: 75px;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 20px;
-  overflow: hidden;
- }
- .mobile-nav a{
-  display: list-item;
-  list-style: none;
-  margin: 15px 0;
- }
-
- /*Footer*/
-
- footer{
-  padding: 20px;
-  background-color: #1a1a1a;
-  color: white;
-  text-align: center;
- }
+header{
+  background-color: #17ec8a;
+  width: 100%;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 140px;
+  z-index: 10;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: rgba(149, 157, 165, 0.5) 0px 8px 24px;
+}
 
  /*Inputs*/
 
@@ -81,9 +63,7 @@
   width: 100% !important;
   outline: #1a1a1a;
  }
- button{
-  background-color: #5a59a0;
- }
+
  .border-form{
   border: 1px solid rgb(233, 233, 233);
   padding: 120px 80px;
@@ -91,15 +71,26 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
  }
 
- /*Generate button*/
 
- .generate-button{
-  background-color: #5a59a0;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 50%;
-  z-index: 5;
+ /*GENERATE BUTTON*/
+
+ .generate-button-container{
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
  }
+ .generate-button-container button{
+  background-color: #17ec8a;
+  color: white;
+  border-radius: 16px;
+  font-weight: 700;
+ }
+
+
 
 
 /*Dahboard*/
@@ -129,17 +120,25 @@
   padding: 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.image-qr{
-  width: 10%;
-}
+
 .image-qr img{
   width: 150px;
   height: 150px;
 }
-.text-qr{
-  width: 90%;
-  overflow: hidden;
+.download-qr-button{
+  background-color: #17ec8a;
+  padding: 5px 20px;
+  margin: 0 15px;
+  border-radius: 8px;
 }
+.delete-qr-button{
+  background-color: red;
+  color: white;
+  padding: 5px 20px;
+  margin: 0 15px;
+  border-radius: 8px;  
+}
+
 @media(max-width: 720px){
   .dashboard-item-container{
     flex-direction: column;
