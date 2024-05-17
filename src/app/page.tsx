@@ -39,8 +39,8 @@ function Dashboard() {
 
   return (
     <>
-      <div style={{ marginTop: "120px" }} className="dashboard-container">
-        <h1 className="text-center font-bold underline underline-offset-2">
+      <div style={{ marginTop: "120px" }} className="dashboard-container flex justify-center">
+        <h1 className="text-center font-bold underline underline-offset-2 text-lg">
           Dashboard - Total QR codes: ({qrs.length})
         </h1>
         {qrs
@@ -49,22 +49,23 @@ function Dashboard() {
           .map((qr, index) => (
             <div key={index}>
               <div className="dashboard-item-container flex justify-between">
-                <div className="mx-5 image-qr flex">
+                <div className="qr-info mx-5 image-qr flex">
                   <Image
+                    className="mx-5"
                     key={index}
                     height={200}
                     width={200}
                     alt={qr.qrName}
                     src={qr.qrImage}
                   ></Image>
-                  <div className="text-qr">
-                    <h2 className="font-bold my-2">{qr.qrName}</h2>
-                    <p className="mb-5 truncate ...">{qr.qrUrl}</p>
+                  <div className="text-qr overflow-hidden">
+                    <h2 className="font-bold my-2 text-lg">{qr.qrName}</h2>
+                    <p className="mb-5 truncate qr-url">{qr.qrUrl}</p>
                     <p>{qr.qrCreatedAt}</p>
                   </div>
                 </div>
 
-                <div className="flex items-end">
+                <div className="flex qr-action-buttons items-end">
                   <a
                     href={qr.qrImage}
                     download={qr.qrName + ".png"}

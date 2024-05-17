@@ -48,7 +48,7 @@ export default function App() {
                 Download QR
               </button>
             </a>
-            <Link href="/dashboard">Go to the Dashboard</Link>
+            <Link href="/">Go to the Dashboard</Link>
           </div>
         )}
 
