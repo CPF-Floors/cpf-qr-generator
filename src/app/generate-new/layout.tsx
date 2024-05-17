@@ -1,7 +1,4 @@
 
-import Header from "@/components/ui/Header";
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -9,7 +6,6 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <Header />
       {children}
     </>
   );

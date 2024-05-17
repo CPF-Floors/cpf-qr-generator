@@ -9,7 +9,7 @@ function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-      <header className="fixed flex justify-center items-center">
+      <header className="flex justify-center items-center">
         <Image alt="logo" width={300} height={300} src="/Group 8252.svg">
 
         </Image>

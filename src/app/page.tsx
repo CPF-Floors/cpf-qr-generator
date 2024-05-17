@@ -39,7 +39,7 @@ function Dashboard() {
 
   return (
     <>
-      <div style={{ marginTop: "120px" }} className="dashboard-container flex justify-center">
+      <div className="dashboard-container flex justify-center">
         <h1 className="text-center font-bold underline underline-offset-2 text-lg">
           Dashboard - Total QR codes: ({qrs.length})
         </h1>
@@ -51,7 +51,7 @@ function Dashboard() {
               <div className="dashboard-item-container flex justify-between">
                 <div className="qr-info mx-5 image-qr flex">
                   <Image
-                    className="mx-5"
+                    className="qr-image-dashboard mx-5"
                     key={index}
                     height={200}
                     width={200}

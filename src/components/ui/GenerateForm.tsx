@@ -44,7 +44,7 @@ export default function App() {
           <div className="qr-display-container my-20 w-100 flex flex-col items-center justify-center">
             <Image src={qr} alt="QR Code" width={300} height={300} />
             <a href={qr} download={`${qrName}.png`}>
-              <button className="W-100 p-2 mb-3 rounded text-white">
+              <button className="download-qr-button-form W-100 p-2 mb-3 rounded text-white">
                 Download QR
               </button>
             </a>
@@ -56,7 +56,7 @@ export default function App() {
           className="flex flex-col w-10/12 text-center justify-center w-100"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <p className="text-start mb-5">Please fill the fields to generate a new QR code</p>
+          <p className="font-semibold text-center mb-5">Please fill the fields to generate a new QR code</p>
           <input
             className="rounded p-2 mb-5"
             placeholder="New QR Name"
@@ -79,10 +79,11 @@ export default function App() {
             <p className="text-start mb-5 text-red-600">URL is required *</p>
           )}
 
-          <button className="p-2 mb-3 rounded text-white" type="submit">
+          <button className="generate-button-form p-2 mb-3 rounded text-white" type="submit">
             Generate
           </button>
         </form>
+        <Link className="underline" href="/">Go back to the Dashboard</Link>
       </div>
     </>
   );
