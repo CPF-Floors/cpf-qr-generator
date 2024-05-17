@@ -50,11 +50,26 @@ header{
   left: 0;
   top: 0;
   height: 140px;
-  z-index: 10;
+  z-index: 100;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   box-shadow: rgba(149, 157, 165, 0.5) 0px 8px 24px;
 }
+.sidebar{
+  height: 100vh;
+  position: fixed;
+  width: 30%;
+  background-color: #f3f5f9;
+  z-index: 200 !important;
+  box-shadow: rgba(149, 157, 165, 0.5) 0px 8px 24px;
+}
+@media(max-width: 1450px){
+  .sidebar{
+    width: 50%;
+  }
+}
+
+
 
  /*Inputs*/
 
@@ -150,6 +165,13 @@ header{
 
 @media(max-width: 1022px){
 
+  .header-logo{
+    height: 50px;
+  }
+  .sidebar{
+    width: 100%;
+  }
+
   .dashboard-item-container{
     flex-direction: column;
     text-align: center;
@@ -191,4 +213,5 @@ header{
   background-color: #17ec8a;
   margin: 20px 0;
   border-radius: 12px;
+  padding: 15px 25px;
 }
