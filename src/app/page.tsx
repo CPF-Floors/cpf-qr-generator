@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -14,6 +14,7 @@ interface QR {
 function Dashboard() {
   const [qrs, setQrs] = useState<QR[]>([]);
   const [url, setUrl] = useState("");
+  const [search, setSearch] = useState(""); // Estado para la búsqueda
 
   useEffect(() => {
     const fetchQrs = async () => {
@@ -43,9 +44,18 @@ function Dashboard() {
         <h1 className="text-center font-bold underline underline-offset-2 text-lg">
           Dashboard - Total QR codes: ({qrs.length})
         </h1>
+        <input
+
+          className="p-2 my-5 rounded search-input"
+          type="text"
+          placeholder="Search QR..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
         {qrs
           .slice()
           .reverse()
+          .filter((qr) => qr.qrName.includes(search) || qr.qrUrl.includes(search)) // Filtra los códigos QR basándose en la búsqueda
           .map((qr, index) => (
             <div key={index}>
               <div className="dashboard-item-container flex justify-between">

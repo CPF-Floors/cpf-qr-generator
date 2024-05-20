@@ -70,7 +70,6 @@ header{
 }
 
 
-
  /*Inputs*/
 
  input{
@@ -86,6 +85,32 @@ header{
   border-radius: 16px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
  }
+
+ .search-input {
+  background-image: url('/magnifying-glass-solid.svg');
+  background-repeat: no-repeat;
+  background-position: 10px 8px ;
+  background-size: 25px;
+  padding-left: 40px;
+}
+
+.search-label {
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 5px;
+  transition: 0.2s ease all;
+}
+
+.search-input:focus ~ .search-label,
+.search-input:not(:placeholder-shown) ~ .search-label {
+  top: -20px;
+  transform: scale(.75);
+  left: -2px;
+  /* font-size: 14px; */
+  color: #3951b2;
+}
+
 
 
  /*GENERATE BUTTON*/
